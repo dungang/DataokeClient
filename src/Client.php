@@ -506,7 +506,7 @@ class Client
             'Accept' => 'application/json',
             'Content-Type' => 'application/json;charset=utf-8'
         ), $headers);
-        $this->lastRequestUrl = $this->gateway . $resource . '?' . http_build_query($data);
+        $this->lastRequestUrl = trim($this->gateway,['/']) . $resource . '?' . http_build_query($data);
         $result = null;
         $httpCode = 500;
         if (! function_exists("curl_init")) {
@@ -561,7 +561,7 @@ class Client
             'actual_price' => $item['actualPrice'],
             'reserve_price' => $item['originalPrice'] + $item['couponPrice'],
             'user_type' => empty($item['shopType']) ? null : $item['shopType'],
-            'item_url' => $item['itemLink'],
+            'item_url' => empty($item['itemLink'])?'':$item['itemLink'],
             'commission_rate' => $item['commissionRate'] * 100,
             'volume' => $item['monthSales'],
             'coupon_start_time' => date('Y-m-d',strtotime($item['couponStartTime'])),
@@ -573,10 +573,10 @@ class Client
             'coupon_start_fee' => $item['couponConditions'],
             'coupon_share_url' => $item['couponLink'],
             'commission_type' => $commission_types[$item['commissionType']],
-            'shop_title' => $item['shopName'],
+            'shop_title' => empty($item['shopName'])?'':$item['shopName'],
             'activity_type' => $item['activityType'],
-            'activity_start_time' => $item['activityStartTime'],
-            'activity_end_time' => $item['activityEndTime'],
+            'activity_start_time' => empty($item['activityStartTime'])?'':$item['activityStartTime'],
+            'activity_end_time' => empty($item['activityEndTime'])?'':$item['activityEndTime'],
         ];
     }
 }
