@@ -1,0 +1,23 @@
+{
+	"name" : "dungang/dataoke-client",
+	"keywords" : [
+		"大淘客  Taobaoke API"
+	],
+	"autoload" : {
+		"psr-4" : {
+			"Dungang\\DataokeClient\\" : "src"
+		}
+	},
+	"license" : "MIT",
+	"require" : {
+		"php" : ">=5.3"
+	},
+	"authors" : [{
+			"name" : "dungang",
+			"email" : "dungang@126.com",
+			"homepage" : "https://github.com/dungang",
+			"role" : "creator"
+		}
+	],
+	"description" : "大淘客淘宝客api客户端"
+}
